@@ -1,0 +1,47 @@
+# Laravel vendor, env, cache, logs, storage
+/vendor
+/node_modules
+.env
+.env.*
+.phpunit.result.cache
+
+/storage/*.key
+/storage/app/public
+/storage/app/uploads
+/storage/framework/cache
+/storage/framework/sessions
+/storage/framework/testing
+/storage/framework/views
+/storage/logs
+
+# L5-Swagger 生成ファイル
+/public/storage/api-docs
+/public/storage/*.json
+
+# Composer/Node/npm/yarn
+composer.lock
+yarn.lock
+package-lock.json
+
+# Docker & Editor
+docker/.phpunit.cache
+docker/php/php.ini
+docker-compose.override.yml
+
+# Mac, VSCode, JetBrains, etc.
+.DS_Store
+.idea/
+.vscode/
+*.iml
+
+# 念のため: テストDB, バックアップ, 余計な出力
+*.sqlite
+*.bak
+*.tmp
+*.swp
+
+# Laravel cache, misc
+/bootstrap/cache/*.php
+/public/hot
+/public/storage
+

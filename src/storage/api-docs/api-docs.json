@@ -1,0 +1,201 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Campsite API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/campsites": {
+            "get": {
+                "summary": "キャンプ場一覧取得",
+                "operationId": "e107ab7411e2a18e97a4a089178cdef2",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "キャンプ場名で部分検索",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "キャンプ場リスト",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Campsite"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "キャンプ場新規作成",
+                "operationId": "afde5e6782f5e3c6d078e7292b2584a6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Campsite"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "作成成功",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Campsite"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/campsites/{id}": {
+            "get": {
+                "summary": "キャンプ場詳細取得",
+                "operationId": "b9dc61f012550b25b094d3a1865c7cfa",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "1件分のキャンプ場データ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Campsite"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "キャンプ場情報更新",
+                "operationId": "6a392444780a515eb72ae601d0442ced",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Campsite"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "更新後データ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Campsite"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "キャンプ場削除",
+                "operationId": "510f5fc63c20bf2231cc4fa28a7b18d2",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "削除完了"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Campsite": {
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "address": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "facilities": {
+                        "type": "string"
+                    },
+                    "price": {
+                        "type": "integer"
+                    },
+                    "image_url": {
+                        "type": "string"
+                    },
+                    "latitude": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "longitude": {
+                        "type": "number",
+                        "format": "float"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}
