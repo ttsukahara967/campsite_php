@@ -2,22 +2,25 @@
 
 namespace Database\Factories;
 
+use App\Models\Campsite;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Campsite>
- */
 class CampsiteFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = Campsite::class;
+
+    public function definition()
     {
         return [
-            //
+            'name' => $this->faker->word() . 'キャンプ場',
+            'address' => $this->faker->address(),
+            'description' => $this->faker->realText(50),
+            'facilities' => 'トイレ, シャワー',
+            'price' => $this->faker->numberBetween(500, 5000),
+            'image_url' => $this->faker->imageUrl(),
+            'latitude' => $this->faker->latitude(),
+            'longitude' => $this->faker->longitude(),
         ];
     }
 }
+
